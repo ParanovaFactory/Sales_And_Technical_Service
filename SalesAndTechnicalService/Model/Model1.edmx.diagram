@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f2575e72aa03419dba0564e437f2ad90" Name="Diagram1">
+        <EntityTypeShape EntityType="Db_TechnicalServiceModel.TblAdmin" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_TechnicalServiceModel.TblCathegory" Width="1.5" PointX="0.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_TechnicalServiceModel.TblCost" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_TechnicalServiceModel.TblCurrent" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_TechnicalServiceModel.TblDefectiveProduct" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_TechnicalServiceModel.TblDepartment" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_TechnicalServiceModel.TblEmployee" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_TechnicalServiceModel.TblInvoiceBas" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_TechnicalServiceModel.TblInvoiceDetail" Width="1.5" PointX="7.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_TechnicalServiceModel.TblNote" Width="1.5" PointX="11.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_TechnicalServiceModel.TblProcess" Width="1.5" PointX="7.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_TechnicalServiceModel.TblProdcutTracking" Width="1.5" PointX="5.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_TechnicalServiceModel.TblProductAcceptance" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_TechnicalServiceModel.TblProduct" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_TechnicalServiceModel.TblSale" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_TechnicalServiceModel.Tbl_Cities" Width="1.5" PointX="9.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_TechnicalServiceModel.Tbl_Countries" Width="1.5" PointX="11.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_TechnicalServiceModel.Tbl_Provinces" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Db_TechnicalServiceModel.FK_TblProducts_TblCathegories" ManuallyRouted="false" />
+        <AssociationConnector Association="Db_TechnicalServiceModel.FK_TblInvoiceBases_TblCurrent" ManuallyRouted="false" />
+        <AssociationConnector Association="Db_TechnicalServiceModel.FK_TblProductAcceptance_TblCurrent" ManuallyRouted="false" />
+        <AssociationConnector Association="Db_TechnicalServiceModel.FK_TblSales_TblCurrent" ManuallyRouted="false" />
+        <AssociationConnector Association="Db_TechnicalServiceModel.FK_TblDefectiveProduct_TblProcess" ManuallyRouted="false" />
+        <AssociationConnector Association="Db_TechnicalServiceModel.FK_TblEmployees_TblDepartments" ManuallyRouted="false" />
+        <AssociationConnector Association="Db_TechnicalServiceModel.FK_TblInvoiceBases_TblEmployees" ManuallyRouted="false" />
+        <AssociationConnector Association="Db_TechnicalServiceModel.FK_TblProductAcceptance_TblEmployees" ManuallyRouted="false" />
+        <AssociationConnector Association="Db_TechnicalServiceModel.FK_TblSales_TblEmployees" ManuallyRouted="false" />
+        <AssociationConnector Association="Db_TechnicalServiceModel.FK_TblInvoiceDetails_TblInvoiceBases" ManuallyRouted="false" />
+        <AssociationConnector Association="Db_TechnicalServiceModel.FK_TblProdcutTracking_TblProducts" ManuallyRouted="false" />
+        <AssociationConnector Association="Db_TechnicalServiceModel.FK_TblSales_TblProducts" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Db_TechnicalServiceModel.TBl_Contact" Width="1.5" PointX="13.375" PointY="3.75" />
+        <EntityTypeShape EntityType="Db_TechnicalServiceModel.TblAbout" Width="1.5" PointX="12.375" PointY="13.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

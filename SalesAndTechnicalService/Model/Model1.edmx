@@ -1,0 +1,1187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Db_TechnicalServiceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Db_TechnicalService.dbo.Tbl_Cities' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Tbl_Cities">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CountryId" Type="int" />
+        </EntityType>
+        <EntityType Name="TBl_Contact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactNameSurname" Type="varchar" MaxLength="50" />
+          <Property Name="ContactEMail" Type="varchar" MaxLength="50" />
+          <Property Name="ContactTitle" Type="varchar(max)" />
+          <Property Name="ContactContext" Type="varchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Db_TechnicalService.dbo.Tbl_Countries' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Tbl_Countries">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Db_TechnicalService.dbo.Tbl_Provinces' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Tbl_Provinces">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="City_Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="City_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblAbout">
+          <Key>
+            <PropertyRef Name="AboutId" />
+          </Key>
+          <Property Name="AboutId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Context" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="TblAdmin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TblCathegories">
+          <Key>
+            <PropertyRef Name="CathegoryId" />
+          </Key>
+          <Property Name="CathegoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CathegoryName" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="TblCosts">
+          <Key>
+            <PropertyRef Name="CostId" />
+          </Key>
+          <Property Name="CostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CostTitle" Type="varchar" MaxLength="50" />
+          <Property Name="CostDate" Type="varchar" MaxLength="10" />
+          <Property Name="CostAmount" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="TblCurrent">
+          <Key>
+            <PropertyRef Name="CurrentId" />
+          </Key>
+          <Property Name="CurrentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CurrentName" Type="varchar" MaxLength="30" />
+          <Property Name="CurrentSurname" Type="varchar" MaxLength="30" />
+          <Property Name="CurrentPhone" Type="varchar" MaxLength="20" />
+          <Property Name="CurrentMail" Type="varchar" MaxLength="50" />
+          <Property Name="CurrentCountry" Type="varchar" MaxLength="50" />
+          <Property Name="CurrentCity" Type="varchar" MaxLength="50" />
+          <Property Name="CurrentProvince" Type="varchar" MaxLength="50" />
+          <Property Name="CurrentBank" Type="varchar" MaxLength="50" />
+          <Property Name="CurrentTaxOffice" Type="varchar" MaxLength="50" />
+          <Property Name="CurrentTaxNumber" Type="varchar" MaxLength="50" />
+          <Property Name="CurrentStatus" Type="varchar" MaxLength="50" />
+          <Property Name="CurrentAddress" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="TblDefectiveProduct">
+          <Key>
+            <PropertyRef Name="FaultId" />
+          </Key>
+          <Property Name="FaultId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FaultProcess" Type="int" />
+          <Property Name="FaultProblem" Type="varchar(max)" />
+          <Property Name="FaultNote" Type="varchar(max)" />
+          <Property Name="FaultEstimatedPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FaultTransactionsMade" Type="varchar(max)" />
+          <Property Name="FaultNetPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FaultSerieNo" Type="char" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="TblDepartments">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentName" Type="varchar" MaxLength="50" />
+          <Property Name="DepartmentDescription" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="TblEmployees">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeName" Type="varchar" MaxLength="30" />
+          <Property Name="EmployeeSurname" Type="varchar" MaxLength="30" />
+          <Property Name="EmployeeDepartment" Type="int" />
+          <Property Name="EmployeeImage" Type="varchar(max)" />
+          <Property Name="EmployeeMail" Type="varchar" MaxLength="50" />
+          <Property Name="EmployeePhone" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TblInvoiceBases">
+          <Key>
+            <PropertyRef Name="InvoiceBaseId" />
+          </Key>
+          <Property Name="InvoiceBaseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceBaseSerie" Type="varchar" MaxLength="50" />
+          <Property Name="InvoiceBaseOrderNo" Type="varchar" MaxLength="50" />
+          <Property Name="InvoiceBaseDate" Type="char" MaxLength="10" />
+          <Property Name="InvoiceBaseHour" Type="char" MaxLength="5" />
+          <Property Name="InvoiceBaseTaxOffice" Type="varchar" MaxLength="50" />
+          <Property Name="InvoiceBaseCurrentId" Type="int" />
+          <Property Name="InvoiceBaseEmployee" Type="int" />
+        </EntityType>
+        <EntityType Name="TblInvoiceDetails">
+          <Key>
+            <PropertyRef Name="InvoiceDetailsId" />
+          </Key>
+          <Property Name="InvoiceDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceDetailsProduct" Type="varchar" MaxLength="50" />
+          <Property Name="InvoiceDetailsPiece" Type="smallint" />
+          <Property Name="InvoiceDetailsPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="InvoiceDetailsTotalPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="InvoiceId" Type="int" />
+        </EntityType>
+        <EntityType Name="TblNotes">
+          <Key>
+            <PropertyRef Name="NoteId" />
+          </Key>
+          <Property Name="NoteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoteTitle" Type="varchar" MaxLength="50" />
+          <Property Name="NoteContext" Type="varchar(max)" />
+          <Property Name="NoteStatus" Type="bit" />
+        </EntityType>
+        <EntityType Name="TblProcess">
+          <Key>
+            <PropertyRef Name="ProcessId" />
+          </Key>
+          <Property Name="ProcessId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProcessTitle" Type="varchar" MaxLength="50" />
+          <Property Name="ProcessDescription" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="TblProdcutTracking">
+          <Key>
+            <PropertyRef Name="TrackingId" />
+          </Key>
+          <Property Name="TrackingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TrackingProduct" Type="int" />
+          <Property Name="TrackingStatus" Type="varchar(max)" />
+          <Property Name="TrackingDate" Type="varchar" MaxLength="10" />
+          <Property Name="TrackingCode" Type="char" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="TblProductAcceptance">
+          <Key>
+            <PropertyRef Name="AcceptId" />
+          </Key>
+          <Property Name="AcceptId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AcceptEmployee" Type="int" />
+          <Property Name="AcceptCurrentId" Type="int" />
+          <Property Name="AcceptComingDate" Type="varchar" MaxLength="10" />
+          <Property Name="AcceptGointDate" Type="varchar" MaxLength="10" />
+          <Property Name="AcceptSerieNo" Type="char" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="TblProducts">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="50" />
+          <Property Name="ProductBrand" Type="varchar" MaxLength="30" />
+          <Property Name="ProductBuyingPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ProductSellingPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ProductStock" Type="smallint" />
+          <Property Name="ProductCathegory" Type="int" />
+          <Property Name="ProductDescription" Type="varchar(max)" />
+          <Property Name="ProductStatus" Type="bit" />
+        </EntityType>
+        <EntityType Name="TblSales">
+          <Key>
+            <PropertyRef Name="SaleId" />
+          </Key>
+          <Property Name="SaleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SaleProduct" Type="int" />
+          <Property Name="SaleCustomer" Type="int" />
+          <Property Name="SaleEmployee" Type="int" />
+          <Property Name="SaleDate" Type="varchar" MaxLength="10" />
+          <Property Name="SalePiece" Type="smallint" />
+          <Property Name="SalePrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SaleTotalPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SaleProdutSerieNo" Type="char" MaxLength="5" />
+        </EntityType>
+        <Association Name="FK_TblDefectiveProduct_TblProcess">
+          <End Role="TblProcess" Type="Self.TblProcess" Multiplicity="0..1" />
+          <End Role="TblDefectiveProduct" Type="Self.TblDefectiveProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblProcess">
+              <PropertyRef Name="ProcessId" />
+            </Principal>
+            <Dependent Role="TblDefectiveProduct">
+              <PropertyRef Name="FaultProcess" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblEmployees_TblDepartments">
+          <End Role="TblDepartments" Type="Self.TblDepartments" Multiplicity="0..1" />
+          <End Role="TblEmployees" Type="Self.TblEmployees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblDepartments">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="TblEmployees">
+              <PropertyRef Name="EmployeeDepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblInvoiceBases_TblCurrent">
+          <End Role="TblCurrent" Type="Self.TblCurrent" Multiplicity="0..1" />
+          <End Role="TblInvoiceBases" Type="Self.TblInvoiceBases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCurrent">
+              <PropertyRef Name="CurrentId" />
+            </Principal>
+            <Dependent Role="TblInvoiceBases">
+              <PropertyRef Name="InvoiceBaseCurrentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblInvoiceBases_TblEmployees">
+          <End Role="TblEmployees" Type="Self.TblEmployees" Multiplicity="0..1" />
+          <End Role="TblInvoiceBases" Type="Self.TblInvoiceBases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblEmployees">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="TblInvoiceBases">
+              <PropertyRef Name="InvoiceBaseEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblInvoiceDetails_TblInvoiceBases">
+          <End Role="TblInvoiceBases" Type="Self.TblInvoiceBases" Multiplicity="0..1" />
+          <End Role="TblInvoiceDetails" Type="Self.TblInvoiceDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblInvoiceBases">
+              <PropertyRef Name="InvoiceBaseId" />
+            </Principal>
+            <Dependent Role="TblInvoiceDetails">
+              <PropertyRef Name="InvoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblProdcutTracking_TblProducts">
+          <End Role="TblProducts" Type="Self.TblProducts" Multiplicity="0..1" />
+          <End Role="TblProdcutTracking" Type="Self.TblProdcutTracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblProducts">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="TblProdcutTracking">
+              <PropertyRef Name="TrackingProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblProductAcceptance_TblCurrent">
+          <End Role="TblCurrent" Type="Self.TblCurrent" Multiplicity="0..1" />
+          <End Role="TblProductAcceptance" Type="Self.TblProductAcceptance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCurrent">
+              <PropertyRef Name="CurrentId" />
+            </Principal>
+            <Dependent Role="TblProductAcceptance">
+              <PropertyRef Name="AcceptCurrentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblProductAcceptance_TblEmployees">
+          <End Role="TblEmployees" Type="Self.TblEmployees" Multiplicity="0..1" />
+          <End Role="TblProductAcceptance" Type="Self.TblProductAcceptance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblEmployees">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="TblProductAcceptance">
+              <PropertyRef Name="AcceptEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblProducts_TblCathegories">
+          <End Role="TblCathegories" Type="Self.TblCathegories" Multiplicity="0..1" />
+          <End Role="TblProducts" Type="Self.TblProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCathegories">
+              <PropertyRef Name="CathegoryId" />
+            </Principal>
+            <Dependent Role="TblProducts">
+              <PropertyRef Name="ProductCathegory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblSales_TblCurrent">
+          <End Role="TblCurrent" Type="Self.TblCurrent" Multiplicity="0..1" />
+          <End Role="TblSales" Type="Self.TblSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCurrent">
+              <PropertyRef Name="CurrentId" />
+            </Principal>
+            <Dependent Role="TblSales">
+              <PropertyRef Name="SaleCustomer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblSales_TblEmployees">
+          <End Role="TblEmployees" Type="Self.TblEmployees" Multiplicity="0..1" />
+          <End Role="TblSales" Type="Self.TblSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblEmployees">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="TblSales">
+              <PropertyRef Name="SaleEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblSales_TblProducts">
+          <End Role="TblProducts" Type="Self.TblProducts" Multiplicity="0..1" />
+          <End Role="TblSales" Type="Self.TblSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblProducts">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="TblSales">
+              <PropertyRef Name="SaleProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="listcatpro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="listcatpro1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Db_TechnicalServiceModelStoreContainer">
+          <EntitySet Name="TBl_Contact" EntityType="Self.TBl_Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblAbout" EntityType="Self.TblAbout" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblAdmin" EntityType="Self.TblAdmin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblCathegories" EntityType="Self.TblCathegories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblCosts" EntityType="Self.TblCosts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblCurrent" EntityType="Self.TblCurrent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblDefectiveProduct" EntityType="Self.TblDefectiveProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblDepartments" EntityType="Self.TblDepartments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblEmployees" EntityType="Self.TblEmployees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblInvoiceBases" EntityType="Self.TblInvoiceBases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblInvoiceDetails" EntityType="Self.TblInvoiceDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblNotes" EntityType="Self.TblNotes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblProcess" EntityType="Self.TblProcess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblProdcutTracking" EntityType="Self.TblProdcutTracking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblProductAcceptance" EntityType="Self.TblProductAcceptance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblProducts" EntityType="Self.TblProducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblSales" EntityType="Self.TblSales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Cities" EntityType="Self.Tbl_Cities" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Tbl_Cities].[Id] AS [Id], 
+    [Tbl_Cities].[Name] AS [Name], 
+    [Tbl_Cities].[CountryId] AS [CountryId]
+    FROM [dbo].[Tbl_Cities] AS [Tbl_Cities]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Tbl_Countries" EntityType="Self.Tbl_Countries" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Tbl_Countries].[Id] AS [Id], 
+    [Tbl_Countries].[Name] AS [Name]
+    FROM [dbo].[Tbl_Countries] AS [Tbl_Countries]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Tbl_Provinces" EntityType="Self.Tbl_Provinces" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Tbl_Provinces].[Id] AS [Id], 
+    [Tbl_Provinces].[Name] AS [Name], 
+    [Tbl_Provinces].[City_Id] AS [City_Id]
+    FROM [dbo].[Tbl_Provinces] AS [Tbl_Provinces]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_TblDefectiveProduct_TblProcess" Association="Self.FK_TblDefectiveProduct_TblProcess">
+            <End Role="TblProcess" EntitySet="TblProcess" />
+            <End Role="TblDefectiveProduct" EntitySet="TblDefectiveProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblEmployees_TblDepartments" Association="Self.FK_TblEmployees_TblDepartments">
+            <End Role="TblDepartments" EntitySet="TblDepartments" />
+            <End Role="TblEmployees" EntitySet="TblEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblInvoiceBases_TblCurrent" Association="Self.FK_TblInvoiceBases_TblCurrent">
+            <End Role="TblCurrent" EntitySet="TblCurrent" />
+            <End Role="TblInvoiceBases" EntitySet="TblInvoiceBases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblInvoiceBases_TblEmployees" Association="Self.FK_TblInvoiceBases_TblEmployees">
+            <End Role="TblEmployees" EntitySet="TblEmployees" />
+            <End Role="TblInvoiceBases" EntitySet="TblInvoiceBases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblInvoiceDetails_TblInvoiceBases" Association="Self.FK_TblInvoiceDetails_TblInvoiceBases">
+            <End Role="TblInvoiceBases" EntitySet="TblInvoiceBases" />
+            <End Role="TblInvoiceDetails" EntitySet="TblInvoiceDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblProdcutTracking_TblProducts" Association="Self.FK_TblProdcutTracking_TblProducts">
+            <End Role="TblProducts" EntitySet="TblProducts" />
+            <End Role="TblProdcutTracking" EntitySet="TblProdcutTracking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblProductAcceptance_TblCurrent" Association="Self.FK_TblProductAcceptance_TblCurrent">
+            <End Role="TblCurrent" EntitySet="TblCurrent" />
+            <End Role="TblProductAcceptance" EntitySet="TblProductAcceptance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblProductAcceptance_TblEmployees" Association="Self.FK_TblProductAcceptance_TblEmployees">
+            <End Role="TblEmployees" EntitySet="TblEmployees" />
+            <End Role="TblProductAcceptance" EntitySet="TblProductAcceptance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblProducts_TblCathegories" Association="Self.FK_TblProducts_TblCathegories">
+            <End Role="TblCathegories" EntitySet="TblCathegories" />
+            <End Role="TblProducts" EntitySet="TblProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblSales_TblCurrent" Association="Self.FK_TblSales_TblCurrent">
+            <End Role="TblCurrent" EntitySet="TblCurrent" />
+            <End Role="TblSales" EntitySet="TblSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblSales_TblEmployees" Association="Self.FK_TblSales_TblEmployees">
+            <End Role="TblEmployees" EntitySet="TblEmployees" />
+            <End Role="TblSales" EntitySet="TblSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblSales_TblProducts" Association="Self.FK_TblSales_TblProducts">
+            <End Role="TblProducts" EntitySet="TblProducts" />
+            <End Role="TblSales" EntitySet="TblSales" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Db_TechnicalServiceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TblAdmin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TblCathegory">
+          <Key>
+            <PropertyRef Name="CathegoryId" />
+          </Key>
+          <Property Name="CathegoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CathegoryName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TblProducts" Relationship="Self.FK_TblProducts_TblCathegories" FromRole="TblCathegories" ToRole="TblProducts" />
+        </EntityType>
+        <EntityType Name="TblCost">
+          <Key>
+            <PropertyRef Name="CostId" />
+          </Key>
+          <Property Name="CostId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CostTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CostDate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CostAmount" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="TblCurrent">
+          <Key>
+            <PropertyRef Name="CurrentId" />
+          </Key>
+          <Property Name="CurrentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CurrentName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentSurname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentMail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentBank" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentTaxOffice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentTaxNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TblInvoiceBases" Relationship="Self.FK_TblInvoiceBases_TblCurrent" FromRole="TblCurrent" ToRole="TblInvoiceBases" />
+          <NavigationProperty Name="TblProductAcceptances" Relationship="Self.FK_TblProductAcceptance_TblCurrent" FromRole="TblCurrent" ToRole="TblProductAcceptance" />
+          <NavigationProperty Name="TblSales" Relationship="Self.FK_TblSales_TblCurrent" FromRole="TblCurrent" ToRole="TblSales" />
+        </EntityType>
+        <EntityType Name="TblDefectiveProduct">
+          <Key>
+            <PropertyRef Name="FaultId" />
+          </Key>
+          <Property Name="FaultId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FaultProcess" Type="Int32" />
+          <Property Name="FaultProblem" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FaultNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FaultEstimatedPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FaultTransactionsMade" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FaultNetPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FaultSerieNo" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="TblProcess" Relationship="Self.FK_TblDefectiveProduct_TblProcess" FromRole="TblDefectiveProduct" ToRole="TblProcess" />
+        </EntityType>
+        <EntityType Name="TblDepartment">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DepartmentDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TblEmployees" Relationship="Self.FK_TblEmployees_TblDepartments" FromRole="TblDepartments" ToRole="TblEmployees" />
+        </EntityType>
+        <EntityType Name="TblEmployee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeSurname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeDepartment" Type="Int32" />
+          <Property Name="EmployeeImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeMail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeePhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TblDepartment" Relationship="Self.FK_TblEmployees_TblDepartments" FromRole="TblEmployees" ToRole="TblDepartments" />
+          <NavigationProperty Name="TblInvoiceBases" Relationship="Self.FK_TblInvoiceBases_TblEmployees" FromRole="TblEmployees" ToRole="TblInvoiceBases" />
+          <NavigationProperty Name="TblProductAcceptances" Relationship="Self.FK_TblProductAcceptance_TblEmployees" FromRole="TblEmployees" ToRole="TblProductAcceptance" />
+          <NavigationProperty Name="TblSales" Relationship="Self.FK_TblSales_TblEmployees" FromRole="TblEmployees" ToRole="TblSales" />
+        </EntityType>
+        <EntityType Name="TblInvoiceBas">
+          <Key>
+            <PropertyRef Name="InvoiceBaseId" />
+          </Key>
+          <Property Name="InvoiceBaseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceBaseSerie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceBaseOrderNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceBaseDate" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="InvoiceBaseHour" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="InvoiceBaseTaxOffice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceBaseCurrentId" Type="Int32" />
+          <Property Name="InvoiceBaseEmployee" Type="Int32" />
+          <NavigationProperty Name="TblCurrent" Relationship="Self.FK_TblInvoiceBases_TblCurrent" FromRole="TblInvoiceBases" ToRole="TblCurrent" />
+          <NavigationProperty Name="TblEmployee" Relationship="Self.FK_TblInvoiceBases_TblEmployees" FromRole="TblInvoiceBases" ToRole="TblEmployees" />
+          <NavigationProperty Name="TblInvoiceDetails" Relationship="Self.FK_TblInvoiceDetails_TblInvoiceBases" FromRole="TblInvoiceBases" ToRole="TblInvoiceDetails" />
+        </EntityType>
+        <EntityType Name="TblInvoiceDetail">
+          <Key>
+            <PropertyRef Name="InvoiceDetailsId" />
+          </Key>
+          <Property Name="InvoiceDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceDetailsProduct" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceDetailsPiece" Type="Int16" />
+          <Property Name="InvoiceDetailsPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="InvoiceDetailsTotalPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="InvoiceId" Type="Int32" />
+          <NavigationProperty Name="TblInvoiceBas" Relationship="Self.FK_TblInvoiceDetails_TblInvoiceBases" FromRole="TblInvoiceDetails" ToRole="TblInvoiceBases" />
+        </EntityType>
+        <EntityType Name="TblNote">
+          <Key>
+            <PropertyRef Name="NoteId" />
+          </Key>
+          <Property Name="NoteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoteTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NoteContext" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NoteStatus" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TblProcess">
+          <Key>
+            <PropertyRef Name="ProcessId" />
+          </Key>
+          <Property Name="ProcessId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProcessTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProcessDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TblDefectiveProducts" Relationship="Self.FK_TblDefectiveProduct_TblProcess" FromRole="TblProcess" ToRole="TblDefectiveProduct" />
+        </EntityType>
+        <EntityType Name="TblProdcutTracking">
+          <Key>
+            <PropertyRef Name="TrackingId" />
+          </Key>
+          <Property Name="TrackingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TrackingProduct" Type="Int32" />
+          <Property Name="TrackingStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TrackingDate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TrackingCode" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="TblProduct" Relationship="Self.FK_TblProdcutTracking_TblProducts" FromRole="TblProdcutTracking" ToRole="TblProducts" />
+        </EntityType>
+        <EntityType Name="TblProductAcceptance">
+          <Key>
+            <PropertyRef Name="AcceptId" />
+          </Key>
+          <Property Name="AcceptId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AcceptEmployee" Type="Int32" />
+          <Property Name="AcceptCurrentId" Type="Int32" />
+          <Property Name="AcceptComingDate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AcceptGointDate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AcceptSerieNo" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="TblCurrent" Relationship="Self.FK_TblProductAcceptance_TblCurrent" FromRole="TblProductAcceptance" ToRole="TblCurrent" />
+          <NavigationProperty Name="TblEmployee" Relationship="Self.FK_TblProductAcceptance_TblEmployees" FromRole="TblProductAcceptance" ToRole="TblEmployees" />
+        </EntityType>
+        <EntityType Name="TblProduct">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductBrand" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ProductBuyingPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ProductSellingPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ProductStock" Type="Int16" />
+          <Property Name="ProductCathegory" Type="Int32" />
+          <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ProductStatus" Type="Boolean" />
+          <NavigationProperty Name="TblCathegory" Relationship="Self.FK_TblProducts_TblCathegories" FromRole="TblProducts" ToRole="TblCathegories" />
+          <NavigationProperty Name="TblProdcutTrackings" Relationship="Self.FK_TblProdcutTracking_TblProducts" FromRole="TblProducts" ToRole="TblProdcutTracking" />
+          <NavigationProperty Name="TblSales" Relationship="Self.FK_TblSales_TblProducts" FromRole="TblProducts" ToRole="TblSales" />
+        </EntityType>
+        <EntityType Name="TblSale">
+          <Key>
+            <PropertyRef Name="SaleId" />
+          </Key>
+          <Property Name="SaleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SaleProduct" Type="Int32" />
+          <Property Name="SaleCustomer" Type="Int32" />
+          <Property Name="SaleEmployee" Type="Int32" />
+          <Property Name="SaleDate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SalePiece" Type="Int16" />
+          <Property Name="SalePrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SaleTotalPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SaleProdutSerieNo" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="TblCurrent" Relationship="Self.FK_TblSales_TblCurrent" FromRole="TblSales" ToRole="TblCurrent" />
+          <NavigationProperty Name="TblEmployee" Relationship="Self.FK_TblSales_TblEmployees" FromRole="TblSales" ToRole="TblEmployees" />
+          <NavigationProperty Name="TblProduct" Relationship="Self.FK_TblSales_TblProducts" FromRole="TblSales" ToRole="TblProducts" />
+        </EntityType>
+        <EntityType Name="Tbl_Cities">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CountryId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_Countries">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Provinces">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="City_Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="City_Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TblProducts_TblCathegories">
+          <End Role="TblCathegories" Type="Self.TblCathegory" Multiplicity="0..1" />
+          <End Role="TblProducts" Type="Self.TblProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCathegories">
+              <PropertyRef Name="CathegoryId" />
+            </Principal>
+            <Dependent Role="TblProducts">
+              <PropertyRef Name="ProductCathegory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblInvoiceBases_TblCurrent">
+          <End Role="TblCurrent" Type="Self.TblCurrent" Multiplicity="0..1" />
+          <End Role="TblInvoiceBases" Type="Self.TblInvoiceBas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCurrent">
+              <PropertyRef Name="CurrentId" />
+            </Principal>
+            <Dependent Role="TblInvoiceBases">
+              <PropertyRef Name="InvoiceBaseCurrentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblProductAcceptance_TblCurrent">
+          <End Role="TblCurrent" Type="Self.TblCurrent" Multiplicity="0..1" />
+          <End Role="TblProductAcceptance" Type="Self.TblProductAcceptance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCurrent">
+              <PropertyRef Name="CurrentId" />
+            </Principal>
+            <Dependent Role="TblProductAcceptance">
+              <PropertyRef Name="AcceptCurrentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblSales_TblCurrent">
+          <End Role="TblCurrent" Type="Self.TblCurrent" Multiplicity="0..1" />
+          <End Role="TblSales" Type="Self.TblSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCurrent">
+              <PropertyRef Name="CurrentId" />
+            </Principal>
+            <Dependent Role="TblSales">
+              <PropertyRef Name="SaleCustomer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblDefectiveProduct_TblProcess">
+          <End Role="TblProcess" Type="Self.TblProcess" Multiplicity="0..1" />
+          <End Role="TblDefectiveProduct" Type="Self.TblDefectiveProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblProcess">
+              <PropertyRef Name="ProcessId" />
+            </Principal>
+            <Dependent Role="TblDefectiveProduct">
+              <PropertyRef Name="FaultProcess" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblEmployees_TblDepartments">
+          <End Role="TblDepartments" Type="Self.TblDepartment" Multiplicity="0..1" />
+          <End Role="TblEmployees" Type="Self.TblEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblDepartments">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="TblEmployees">
+              <PropertyRef Name="EmployeeDepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblInvoiceBases_TblEmployees">
+          <End Role="TblEmployees" Type="Self.TblEmployee" Multiplicity="0..1" />
+          <End Role="TblInvoiceBases" Type="Self.TblInvoiceBas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblEmployees">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="TblInvoiceBases">
+              <PropertyRef Name="InvoiceBaseEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblProductAcceptance_TblEmployees">
+          <End Role="TblEmployees" Type="Self.TblEmployee" Multiplicity="0..1" />
+          <End Role="TblProductAcceptance" Type="Self.TblProductAcceptance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblEmployees">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="TblProductAcceptance">
+              <PropertyRef Name="AcceptEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblSales_TblEmployees">
+          <End Role="TblEmployees" Type="Self.TblEmployee" Multiplicity="0..1" />
+          <End Role="TblSales" Type="Self.TblSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblEmployees">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="TblSales">
+              <PropertyRef Name="SaleEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblInvoiceDetails_TblInvoiceBases">
+          <End Role="TblInvoiceBases" Type="Self.TblInvoiceBas" Multiplicity="0..1" />
+          <End Role="TblInvoiceDetails" Type="Self.TblInvoiceDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblInvoiceBases">
+              <PropertyRef Name="InvoiceBaseId" />
+            </Principal>
+            <Dependent Role="TblInvoiceDetails">
+              <PropertyRef Name="InvoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblProdcutTracking_TblProducts">
+          <End Role="TblProducts" Type="Self.TblProduct" Multiplicity="0..1" />
+          <End Role="TblProdcutTracking" Type="Self.TblProdcutTracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblProducts">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="TblProdcutTracking">
+              <PropertyRef Name="TrackingProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblSales_TblProducts">
+          <End Role="TblProducts" Type="Self.TblProduct" Multiplicity="0..1" />
+          <End Role="TblSales" Type="Self.TblSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblProducts">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="TblSales">
+              <PropertyRef Name="SaleProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Db_TechnicalServiceEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TblAdmins" EntityType="Self.TblAdmin" />
+          <EntitySet Name="TblCathegories" EntityType="Self.TblCathegory" />
+          <EntitySet Name="TblCosts" EntityType="Self.TblCost" />
+          <EntitySet Name="TblCurrents" EntityType="Self.TblCurrent" />
+          <EntitySet Name="TblDefectiveProducts" EntityType="Self.TblDefectiveProduct" />
+          <EntitySet Name="TblDepartments" EntityType="Self.TblDepartment" />
+          <EntitySet Name="TblEmployees" EntityType="Self.TblEmployee" />
+          <EntitySet Name="TblInvoiceBases" EntityType="Self.TblInvoiceBas" />
+          <EntitySet Name="TblInvoiceDetails" EntityType="Self.TblInvoiceDetail" />
+          <EntitySet Name="TblNotes" EntityType="Self.TblNote" />
+          <EntitySet Name="TblProcesses" EntityType="Self.TblProcess" />
+          <EntitySet Name="TblProdcutTrackings" EntityType="Self.TblProdcutTracking" />
+          <EntitySet Name="TblProductAcceptances" EntityType="Self.TblProductAcceptance" />
+          <EntitySet Name="TblProducts" EntityType="Self.TblProduct" />
+          <EntitySet Name="TblSales" EntityType="Self.TblSale" />
+          <EntitySet Name="Tbl_Cities" EntityType="Self.Tbl_Cities" />
+          <EntitySet Name="Tbl_Countries" EntityType="Self.Tbl_Countries" />
+          <EntitySet Name="Tbl_Provinces" EntityType="Self.Tbl_Provinces" />
+          <AssociationSet Name="FK_TblProducts_TblCathegories" Association="Self.FK_TblProducts_TblCathegories">
+            <End Role="TblCathegories" EntitySet="TblCathegories" />
+            <End Role="TblProducts" EntitySet="TblProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblInvoiceBases_TblCurrent" Association="Self.FK_TblInvoiceBases_TblCurrent">
+            <End Role="TblCurrent" EntitySet="TblCurrents" />
+            <End Role="TblInvoiceBases" EntitySet="TblInvoiceBases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblProductAcceptance_TblCurrent" Association="Self.FK_TblProductAcceptance_TblCurrent">
+            <End Role="TblCurrent" EntitySet="TblCurrents" />
+            <End Role="TblProductAcceptance" EntitySet="TblProductAcceptances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblSales_TblCurrent" Association="Self.FK_TblSales_TblCurrent">
+            <End Role="TblCurrent" EntitySet="TblCurrents" />
+            <End Role="TblSales" EntitySet="TblSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblDefectiveProduct_TblProcess" Association="Self.FK_TblDefectiveProduct_TblProcess">
+            <End Role="TblProcess" EntitySet="TblProcesses" />
+            <End Role="TblDefectiveProduct" EntitySet="TblDefectiveProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblEmployees_TblDepartments" Association="Self.FK_TblEmployees_TblDepartments">
+            <End Role="TblDepartments" EntitySet="TblDepartments" />
+            <End Role="TblEmployees" EntitySet="TblEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblInvoiceBases_TblEmployees" Association="Self.FK_TblInvoiceBases_TblEmployees">
+            <End Role="TblEmployees" EntitySet="TblEmployees" />
+            <End Role="TblInvoiceBases" EntitySet="TblInvoiceBases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblProductAcceptance_TblEmployees" Association="Self.FK_TblProductAcceptance_TblEmployees">
+            <End Role="TblEmployees" EntitySet="TblEmployees" />
+            <End Role="TblProductAcceptance" EntitySet="TblProductAcceptances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblSales_TblEmployees" Association="Self.FK_TblSales_TblEmployees">
+            <End Role="TblEmployees" EntitySet="TblEmployees" />
+            <End Role="TblSales" EntitySet="TblSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblInvoiceDetails_TblInvoiceBases" Association="Self.FK_TblInvoiceDetails_TblInvoiceBases">
+            <End Role="TblInvoiceBases" EntitySet="TblInvoiceBases" />
+            <End Role="TblInvoiceDetails" EntitySet="TblInvoiceDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblProdcutTracking_TblProducts" Association="Self.FK_TblProdcutTracking_TblProducts">
+            <End Role="TblProducts" EntitySet="TblProducts" />
+            <End Role="TblProdcutTracking" EntitySet="TblProdcutTrackings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblSales_TblProducts" Association="Self.FK_TblSales_TblProducts">
+            <End Role="TblProducts" EntitySet="TblProducts" />
+            <End Role="TblSales" EntitySet="TblSales" />
+          </AssociationSet>
+          <EntitySet Name="TBl_Contact" EntityType="Db_TechnicalServiceModel.TBl_Contact" />
+          <EntitySet Name="TblAbouts" EntityType="Db_TechnicalServiceModel.TblAbout" />
+          <FunctionImport Name="listcatpro" ReturnType="Collection(Db_TechnicalServiceModel.listcatpro_Result)" />
+          <FunctionImport Name="listcatpro1" ReturnType="Collection(Db_TechnicalServiceModel.listcatpro1_Result)" />
+        </EntityContainer>
+        <EntityType Name="TBl_Contact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactNameSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactEMail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactContext" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ContactTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TblAbout">
+          <Key>
+            <PropertyRef Name="AboutId" />
+          </Key>
+          <Property Name="AboutId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Context" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="listcatpro_Result">
+          <Property Type="String" Name="CathegoryName" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="Total_Products" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="listcatpro1_Result">
+          <Property Type="String" Name="CathegoryName" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="Total_Products" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Db_TechnicalServiceModelStoreContainer" CdmEntityContainer="Db_TechnicalServiceEntities">
+          <EntitySetMapping Name="TblAdmins">
+            <EntityTypeMapping TypeName="Db_TechnicalServiceModel.TblAdmin">
+              <MappingFragment StoreEntitySet="TblAdmin">
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblCathegories">
+            <EntityTypeMapping TypeName="Db_TechnicalServiceModel.TblCathegory">
+              <MappingFragment StoreEntitySet="TblCathegories">
+                <ScalarProperty Name="CathegoryId" ColumnName="CathegoryId" />
+                <ScalarProperty Name="CathegoryName" ColumnName="CathegoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblCosts">
+            <EntityTypeMapping TypeName="Db_TechnicalServiceModel.TblCost">
+              <MappingFragment StoreEntitySet="TblCosts">
+                <ScalarProperty Name="CostId" ColumnName="CostId" />
+                <ScalarProperty Name="CostTitle" ColumnName="CostTitle" />
+                <ScalarProperty Name="CostDate" ColumnName="CostDate" />
+                <ScalarProperty Name="CostAmount" ColumnName="CostAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblCurrents">
+            <EntityTypeMapping TypeName="Db_TechnicalServiceModel.TblCurrent">
+              <MappingFragment StoreEntitySet="TblCurrent">
+                <ScalarProperty Name="CurrentId" ColumnName="CurrentId" />
+                <ScalarProperty Name="CurrentName" ColumnName="CurrentName" />
+                <ScalarProperty Name="CurrentSurname" ColumnName="CurrentSurname" />
+                <ScalarProperty Name="CurrentPhone" ColumnName="CurrentPhone" />
+                <ScalarProperty Name="CurrentMail" ColumnName="CurrentMail" />
+                <ScalarProperty Name="CurrentCountry" ColumnName="CurrentCountry" />
+                <ScalarProperty Name="CurrentCity" ColumnName="CurrentCity" />
+                <ScalarProperty Name="CurrentProvince" ColumnName="CurrentProvince" />
+                <ScalarProperty Name="CurrentBank" ColumnName="CurrentBank" />
+                <ScalarProperty Name="CurrentTaxOffice" ColumnName="CurrentTaxOffice" />
+                <ScalarProperty Name="CurrentTaxNumber" ColumnName="CurrentTaxNumber" />
+                <ScalarProperty Name="CurrentStatus" ColumnName="CurrentStatus" />
+                <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblDefectiveProducts">
+            <EntityTypeMapping TypeName="Db_TechnicalServiceModel.TblDefectiveProduct">
+              <MappingFragment StoreEntitySet="TblDefectiveProduct">
+                <ScalarProperty Name="FaultId" ColumnName="FaultId" />
+                <ScalarProperty Name="FaultProcess" ColumnName="FaultProcess" />
+                <ScalarProperty Name="FaultProblem" ColumnName="FaultProblem" />
+                <ScalarProperty Name="FaultNote" ColumnName="FaultNote" />
+                <ScalarProperty Name="FaultEstimatedPrice" ColumnName="FaultEstimatedPrice" />
+                <ScalarProperty Name="FaultTransactionsMade" ColumnName="FaultTransactionsMade" />
+                <ScalarProperty Name="FaultNetPrice" ColumnName="FaultNetPrice" />
+                <ScalarProperty Name="FaultSerieNo" ColumnName="FaultSerieNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblDepartments">
+            <EntityTypeMapping TypeName="Db_TechnicalServiceModel.TblDepartment">
+              <MappingFragment StoreEntitySet="TblDepartments">
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="DepartmentDescription" ColumnName="DepartmentDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblEmployees">
+            <EntityTypeMapping TypeName="Db_TechnicalServiceModel.TblEmployee">
+              <MappingFragment StoreEntitySet="TblEmployees">
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="EmployeeSurname" ColumnName="EmployeeSurname" />
+                <ScalarProperty Name="EmployeeDepartment" ColumnName="EmployeeDepartment" />
+                <ScalarProperty Name="EmployeeImage" ColumnName="EmployeeImage" />
+                <ScalarProperty Name="EmployeeMail" ColumnName="EmployeeMail" />
+                <ScalarProperty Name="EmployeePhone" ColumnName="EmployeePhone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblInvoiceBases">
+            <EntityTypeMapping TypeName="Db_TechnicalServiceModel.TblInvoiceBas">
+              <MappingFragment StoreEntitySet="TblInvoiceBases">
+                <ScalarProperty Name="InvoiceBaseId" ColumnName="InvoiceBaseId" />
+                <ScalarProperty Name="InvoiceBaseSerie" ColumnName="InvoiceBaseSerie" />
+                <ScalarProperty Name="InvoiceBaseOrderNo" ColumnName="InvoiceBaseOrderNo" />
+                <ScalarProperty Name="InvoiceBaseDate" ColumnName="InvoiceBaseDate" />
+                <ScalarProperty Name="InvoiceBaseHour" ColumnName="InvoiceBaseHour" />
+                <ScalarProperty Name="InvoiceBaseTaxOffice" ColumnName="InvoiceBaseTaxOffice" />
+                <ScalarProperty Name="InvoiceBaseCurrentId" ColumnName="InvoiceBaseCurrentId" />
+                <ScalarProperty Name="InvoiceBaseEmployee" ColumnName="InvoiceBaseEmployee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblInvoiceDetails">
+            <EntityTypeMapping TypeName="Db_TechnicalServiceModel.TblInvoiceDetail">
+              <MappingFragment StoreEntitySet="TblInvoiceDetails">
+                <ScalarProperty Name="InvoiceDetailsId" ColumnName="InvoiceDetailsId" />
+                <ScalarProperty Name="InvoiceDetailsProduct" ColumnName="InvoiceDetailsProduct" />
+                <ScalarProperty Name="InvoiceDetailsPiece" ColumnName="InvoiceDetailsPiece" />
+                <ScalarProperty Name="InvoiceDetailsPrice" ColumnName="InvoiceDetailsPrice" />
+                <ScalarProperty Name="InvoiceDetailsTotalPrice" ColumnName="InvoiceDetailsTotalPrice" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblNotes">
+            <EntityTypeMapping TypeName="Db_TechnicalServiceModel.TblNote">
+              <MappingFragment StoreEntitySet="TblNotes">
+                <ScalarProperty Name="NoteId" ColumnName="NoteId" />
+                <ScalarProperty Name="NoteTitle" ColumnName="NoteTitle" />
+                <ScalarProperty Name="NoteContext" ColumnName="NoteContext" />
+                <ScalarProperty Name="NoteStatus" ColumnName="NoteStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblProcesses">
+            <EntityTypeMapping TypeName="Db_TechnicalServiceModel.TblProcess">
+              <MappingFragment StoreEntitySet="TblProcess">
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="ProcessTitle" ColumnName="ProcessTitle" />
+                <ScalarProperty Name="ProcessDescription" ColumnName="ProcessDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblProdcutTrackings">
+            <EntityTypeMapping TypeName="Db_TechnicalServiceModel.TblProdcutTracking">
+              <MappingFragment StoreEntitySet="TblProdcutTracking">
+                <ScalarProperty Name="TrackingId" ColumnName="TrackingId" />
+                <ScalarProperty Name="TrackingProduct" ColumnName="TrackingProduct" />
+                <ScalarProperty Name="TrackingStatus" ColumnName="TrackingStatus" />
+                <ScalarProperty Name="TrackingDate" ColumnName="TrackingDate" />
+                <ScalarProperty Name="TrackingCode" ColumnName="TrackingCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblProductAcceptances">
+            <EntityTypeMapping TypeName="Db_TechnicalServiceModel.TblProductAcceptance">
+              <MappingFragment StoreEntitySet="TblProductAcceptance">
+                <ScalarProperty Name="AcceptId" ColumnName="AcceptId" />
+                <ScalarProperty Name="AcceptEmployee" ColumnName="AcceptEmployee" />
+                <ScalarProperty Name="AcceptCurrentId" ColumnName="AcceptCurrentId" />
+                <ScalarProperty Name="AcceptComingDate" ColumnName="AcceptComingDate" />
+                <ScalarProperty Name="AcceptGointDate" ColumnName="AcceptGointDate" />
+                <ScalarProperty Name="AcceptSerieNo" ColumnName="AcceptSerieNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblProducts">
+            <EntityTypeMapping TypeName="Db_TechnicalServiceModel.TblProduct">
+              <MappingFragment StoreEntitySet="TblProducts">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductBrand" ColumnName="ProductBrand" />
+                <ScalarProperty Name="ProductBuyingPrice" ColumnName="ProductBuyingPrice" />
+                <ScalarProperty Name="ProductSellingPrice" ColumnName="ProductSellingPrice" />
+                <ScalarProperty Name="ProductStock" ColumnName="ProductStock" />
+                <ScalarProperty Name="ProductCathegory" ColumnName="ProductCathegory" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="ProductStatus" ColumnName="ProductStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblSales">
+            <EntityTypeMapping TypeName="Db_TechnicalServiceModel.TblSale">
+              <MappingFragment StoreEntitySet="TblSales">
+                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
+                <ScalarProperty Name="SaleProduct" ColumnName="SaleProduct" />
+                <ScalarProperty Name="SaleCustomer" ColumnName="SaleCustomer" />
+                <ScalarProperty Name="SaleEmployee" ColumnName="SaleEmployee" />
+                <ScalarProperty Name="SaleDate" ColumnName="SaleDate" />
+                <ScalarProperty Name="SalePiece" ColumnName="SalePiece" />
+                <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+                <ScalarProperty Name="SaleTotalPrice" ColumnName="SaleTotalPrice" />
+                <ScalarProperty Name="SaleProdutSerieNo" ColumnName="SaleProdutSerieNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Cities">
+            <EntityTypeMapping TypeName="Db_TechnicalServiceModel.Tbl_Cities">
+              <MappingFragment StoreEntitySet="Tbl_Cities">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Countries">
+            <EntityTypeMapping TypeName="Db_TechnicalServiceModel.Tbl_Countries">
+              <MappingFragment StoreEntitySet="Tbl_Countries">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Provinces">
+            <EntityTypeMapping TypeName="Db_TechnicalServiceModel.Tbl_Provinces">
+              <MappingFragment StoreEntitySet="Tbl_Provinces">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="City_Id" ColumnName="City_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBl_Contact">
+            <EntityTypeMapping TypeName="Db_TechnicalServiceModel.TBl_Contact">
+              <MappingFragment StoreEntitySet="TBl_Contact">
+                <ScalarProperty Name="ContactTitle" ColumnName="ContactTitle" />
+                <ScalarProperty Name="ContactContext" ColumnName="ContactContext" />
+                <ScalarProperty Name="ContactEMail" ColumnName="ContactEMail" />
+                <ScalarProperty Name="ContactNameSurname" ColumnName="ContactNameSurname" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblAbouts">
+            <EntityTypeMapping TypeName="Db_TechnicalServiceModel.TblAbout">
+              <MappingFragment StoreEntitySet="TblAbout">
+                <ScalarProperty Name="Context" ColumnName="Context" />
+                <ScalarProperty Name="AboutId" ColumnName="AboutId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="listcatpro" FunctionName="Db_TechnicalServiceModel.Store.listcatpro">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Db_TechnicalServiceModel.listcatpro_Result">
+                <ScalarProperty Name="CathegoryName" ColumnName="CathegoryName" />
+                <ScalarProperty Name="Total_Products" ColumnName="Total Products" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="listcatpro1" FunctionName="Db_TechnicalServiceModel.Store.listcatpro1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Db_TechnicalServiceModel.listcatpro1_Result">
+                <ScalarProperty Name="CathegoryName" ColumnName="CathegoryName" />
+                <ScalarProperty Name="Total_Products" ColumnName="Total Products" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
