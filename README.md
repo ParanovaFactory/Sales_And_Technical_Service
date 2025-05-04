@@ -50,12 +50,6 @@ This project is a **Sales and Technical Service System** that includes both a **
 
 ---
 
-## 📸 Screenshots
-
-> *(You can insert screenshots from both the desktop and web applications here to visually demonstrate the interface.)*
-
----
-
 ## 🛠 Setup
 
 ### Desktop App
